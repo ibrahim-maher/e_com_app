@@ -1,8 +1,11 @@
+import 'package:e_com_app/view/auth/signin_page.dart';
 import 'package:e_com_app/view/constants/constant.dart';
+import 'package:e_com_app/view/widgets/custom_button.dart';
 import 'package:e_com_app/view/widgets/custom_formfield.dart';
 import 'package:e_com_app/view/widgets/custom_imgbutton.dart';
 import 'package:e_com_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -66,14 +69,11 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              padding: const EdgeInsets.all(16),
-              color: priColor,
-              child: const CustomText(
-                alignment: Alignment.center,
-                color: Colors.white,
-                text: 'SIGN IN',
-              ),
+            Custombutton(
+              onTap: () {
+                Get.to(SignInPage());
+              },
+              text: ' IN',
             ),
             const SizedBox(
               height: 28,
