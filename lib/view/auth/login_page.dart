@@ -4,10 +4,11 @@ import 'package:e_com_app/view/widgets/custom_button.dart';
 import 'package:e_com_app/view/widgets/custom_formfield.dart';
 import 'package:e_com_app/view/widgets/custom_imgbutton.dart';
 import 'package:e_com_app/view/widgets/custom_text.dart';
+import 'package:e_com_app/view_model/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetWidget<AuthViewModel> {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -93,7 +94,10 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const CustomImgButton(
+            CustomImgButton(
+              onTap: () {
+                controller.googlesigninmethod();
+              },
               text: 'Sign In with google',
               img: 'assets/images/icons8_Google_2.png',
             )
