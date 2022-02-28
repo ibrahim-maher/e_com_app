@@ -1,4 +1,4 @@
-import 'package:e_com_app/view/auth/signin_page.dart';
+import 'package:e_com_app/view/auth/signup_page.dart';
 import 'package:e_com_app/view/constants/constant.dart';
 import 'package:e_com_app/view/widgets/custom_button.dart';
 import 'package:e_com_app/view/widgets/custom_formfield.dart';
@@ -20,23 +20,28 @@ class LoginPage extends GetWidget<AuthViewModel> {
         backgroundColor: Colors.white,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(right: 20, left: 20, top: 40),
+        padding: const EdgeInsets.only(right: 20, left: 20, top: 30),
         child: Form(
           key: _formkey,
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  CustomText(
+                children: [
+                  const CustomText(
                     text: 'Welcome,',
                     fontsize: 30,
                     fontWeight: FontWeight.bold,
                   ),
-                  CustomText(
-                    text: 'Sing in',
-                    fontsize: 18,
-                    color: priColor,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(SignUpPage());
+                    },
+                    child: const CustomText(
+                      text: 'Sing in',
+                      fontsize: 18,
+                      color: priColor,
+                    ),
                   ),
                 ],
               ),
@@ -52,10 +57,15 @@ class LoginPage extends GetWidget<AuthViewModel> {
                 height: 48,
               ),
               CustomTextField(
+                onSave: (value) {
+                  controller.email = value;
+                },
                 validate: (value) {
-                  if (value == null) {
-                    print("this field can't be empty ");
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
                   }
+                  controller.email = value;
+                  return null;
                 },
                 hint: 'gahgsgg@gmail.com',
                 text: 'Email',
@@ -64,6 +74,16 @@ class LoginPage extends GetWidget<AuthViewModel> {
                 height: 38,
               ),
               CustomTextField(
+                onSave: (value) {
+                  controller.password = value;
+                },
+                validate: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  controller.password = value;
+                  return null;
+                },
                 hint: '********',
                 text: 'Password',
               ),
@@ -78,20 +98,24 @@ class LoginPage extends GetWidget<AuthViewModel> {
                 height: 20,
               ),
               Custombutton(
-                onTap: () {},
-                text: ' IN',
+                onTap: () {
+                  _formkey.currentState?.save();
+
+                  if (_formkey.currentState!.validate()) {
+                    controller.signwithemailandpassowrd();
+                  }
+                },
+                text: 'SIGN IN',
               ),
               const SizedBox(
-                height: 28,
+                height: 20,
               ),
               const CustomText(
                 text: '-OR-',
                 alignment: Alignment.center,
                 fontsize: 18,
               ),
-              const SizedBox(
-                height: 28,
-              ),
+              const SizedBox(height: 20),
               const CustomImgButton(
                 text: 'Sign In with Facebook',
                 img: 'assets/images/Path 76.png',

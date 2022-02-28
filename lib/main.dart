@@ -1,5 +1,5 @@
 import 'package:e_com_app/helper/auth_helper.dart';
-import 'package:e_com_app/view/auth/Login_Page.dart';
+import 'package:e_com_app/view/widgets/controllview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: const ControllView(),
     );
   }
 }
