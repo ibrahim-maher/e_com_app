@@ -30,7 +30,7 @@ class AuthViewModel extends GetxController {
 
     await auth
         .signInWithCredential(credential)
-        .then((value) => addUserTofirestore(user));
+        .then((user) => addUserTofirestore(user));
 
     Get.offAll(() => HomePage());
   }
@@ -39,7 +39,7 @@ class AuthViewModel extends GetxController {
     try {
       await auth
           .signInWithEmailAndPassword(email: email!, password: password!)
-          .then((value) => addUserTofirestore(user));
+          .then((user) => addUserTofirestore(user));
 
       Get.offAll(() => HomePage());
     } catch (e) {
@@ -52,7 +52,7 @@ class AuthViewModel extends GetxController {
     try {
       await auth
           .createUserWithEmailAndPassword(email: email!, password: password!)
-          .then((value) => addUserTofirestore(user));
+          .then((user) => addUserTofirestore(user));
 
       Get.offAll(() => HomePage());
     } catch (e) {

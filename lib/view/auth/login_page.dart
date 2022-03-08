@@ -1,3 +1,4 @@
+import 'package:e_com_app/view/auth/home_page.dart';
 import 'package:e_com_app/view/auth/signup_page.dart';
 import 'package:e_com_app/view/constants/constant.dart';
 import 'package:e_com_app/view/widgets/custom_button.dart';
@@ -125,7 +126,8 @@ class LoginPage extends GetWidget<AuthViewModel> {
               ),
               CustomImgButton(
                 onTap: () {
-                  controller.googlesigninmethod();
+                  //   controller.googlesigninmethod();
+                  Get.to(HomePage());
                 },
                 text: 'Sign In with google',
                 img: 'assets/images/icons8_Google_2.png',
