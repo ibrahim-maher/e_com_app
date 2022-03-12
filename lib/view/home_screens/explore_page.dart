@@ -1,5 +1,8 @@
+
 import 'package:e_com_app/view/constants/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../view_model/home_view_model.dart';
 import '../widgets/custom_text.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,19 +11,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(items: [
-          BottomNavigationBarItem(
-              label: "Explore",
-              icon: Image.asset(
-                "assets/images/Image.png",
-                width: 20,
-                fit: BoxFit.contain,
-              )),
-          BottomNavigationBarItem(
-              label: "Cart ", icon: Image.asset('assets/images/Icon_User.png')),
-        ]),
+        bottomNavigationBar: _bottomNavigationBar(),
         body: Padding(
-          padding: const EdgeInsets.only(top: 100, right: 20, left: 20),
+          padding: const EdgeInsets.only(top: 80, right: 20, left: 20),
           child: Column(
             children: [
               _searchfield(),
@@ -122,7 +115,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 12,
                   ),
                   CustomText(
                     text: 'BeoPlay Speaker',
@@ -130,7 +123,7 @@ class HomePage extends StatelessWidget {
                     alignment: Alignment.bottomLeft,
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 12,
                   ),
                   CustomText(
                     text: 'Bang and Olufsen',
@@ -138,7 +131,7 @@ class HomePage extends StatelessWidget {
                     color: Colors.grey.shade400,
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 12,
                   ),
                   CustomText(
                     text: '\$755',
@@ -150,4 +143,36 @@ class HomePage extends StatelessWidget {
           }),
     );
   }
+  Widget _bottomNavigationBar() {
+
+    return GetBuilder<HomeViewModel>(
+        init: HomeViewModel(),
+        builder: (controller)=>BottomNavigationBar(
+            currentIndex: controller.currentIndex,
+        onTap: (index)=>controller.changecurrentIndex(index),
+        items: [
+          BottomNavigationBarItem(
+              activeIcon: Text('Explore'),
+              label: "",
+              icon: Image.asset(
+                "assets/images/Icon_Explore.png",
+                width: 20,
+                fit: BoxFit.contain,
+              )),
+          BottomNavigationBarItem(
+              activeIcon: Text('Cart'),
+              label: "",
+              icon: Image.asset(
+                "assets/images/Path 2.png",
+                width: 20,
+                fit: BoxFit.contain,
+              )), BottomNavigationBarItem(
+              activeIcon: Text('acount'),
+              label: "",
+              icon: Image.asset(
+                "assets/images/Icon_User.png",
+                width: 20,
+                fit: BoxFit.contain,
+              )),
+        ]));}
 }
