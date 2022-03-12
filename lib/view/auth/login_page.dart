@@ -1,4 +1,3 @@
-import 'package:e_com_app/view/auth/home_page.dart';
 import 'package:e_com_app/view/auth/signup_page.dart';
 import 'package:e_com_app/view/constants/constant.dart';
 import 'package:e_com_app/view/widgets/custom_button.dart';
@@ -8,6 +7,8 @@ import 'package:e_com_app/view/widgets/custom_text.dart';
 import 'package:e_com_app/view_model/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../widgets/home_page_controll_view.dart';
 
 class LoginPage extends GetWidget<AuthViewModel> {
   LoginPage({Key? key}) : super(key: key);
@@ -127,7 +128,7 @@ class LoginPage extends GetWidget<AuthViewModel> {
               CustomImgButton(
                 onTap: () {
                   //   controller.googlesigninmethod();
-                  Get.to(HomePage());
+                  Get.to(HomePageControllView());
                 },
                 text: 'Sign In with google',
                 img: 'assets/images/icons8_Google_2.png',

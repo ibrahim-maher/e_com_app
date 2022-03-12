@@ -1,9 +1,10 @@
 import 'package:e_com_app/model/usermodel.dart';
 import 'package:e_com_app/services/firestore_user.dart';
-import 'package:e_com_app/view/auth/home_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../view/widgets/home_page_controll_view.dart';
 
 class AuthViewModel extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -32,7 +33,7 @@ class AuthViewModel extends GetxController {
         .signInWithCredential(credential)
         .then((user) => addUserTofirestore(user));
 
-    Get.offAll(() => HomePage());
+    Get.offAll(() => HomePageControllView());
   }
 
   void signwithemailandpassowrd() async {
@@ -41,7 +42,7 @@ class AuthViewModel extends GetxController {
           .signInWithEmailAndPassword(email: email!, password: password!)
           .then((user) => addUserTofirestore(user));
 
-      Get.offAll(() => HomePage());
+      Get.offAll(() => HomePageControllView());
     } catch (e) {
       String message = e.toString();
       Get.snackbar("error snak bar", message);
@@ -54,7 +55,7 @@ class AuthViewModel extends GetxController {
           .createUserWithEmailAndPassword(email: email!, password: password!)
           .then((user) => addUserTofirestore(user));
 
-      Get.offAll(() => HomePage());
+      Get.offAll(() => HomePageControllView());
     } catch (e) {
       String message = e.toString();
       Get.snackbar("error snak bar", message);
