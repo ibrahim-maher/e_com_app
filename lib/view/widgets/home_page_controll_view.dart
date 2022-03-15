@@ -18,6 +18,7 @@ class HomePageControllView extends GetWidget<AuthViewModel> {
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: controller.currentIndex,
             onTap: (index) => controller.changecurrentIndex(index),
+            //klhsdfkjashdkfjhsdfsdfsdfsdfsdfsdfasdf
             items: [
               BottomNavigationBarItem(
                   activeIcon: const Text('Explore'),
