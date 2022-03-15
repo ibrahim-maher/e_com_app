@@ -8,7 +8,7 @@ import '../../view_model/home_view_model.dart';
 
 class HomePageControllView extends GetWidget<AuthViewModel> {
   const HomePageControllView({Key? key}) : super(key: key);
-
+//سصيسؤشسيؤسيؤسيؤ
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
